@@ -6,15 +6,10 @@ output:
     toc_float: true
 ---
 
-# This is Tony's personal website
+## Get to know about me
 
 Hi, I'm Changshen (Tony) Chen. I am a first-year Master of Science student in Biostatistics at Columbia University's Mailman School of Public Health, and I completed my Bachelor of Science in Quantitative Biology at the University of Southern California
 
 I work with clinical and genomic data primarily in R and Python, and I am building SAS and SQL proficiency through coursework at Columbia. My interests are survival analysis and predictive modeling, and I am looking for biostatistics/data scientist roles in the pharmaceutical and life sciences industry.
 
 You can reach me through the GitHub, email, and LinkedIn icons at the top of the page.
-
-# On this site, you can find:
-
-* My [resume](resume.html), with academic and professional experience.
-* A [flexdashboard](flexdashboard.html) of NYC restaurant inspection data created with plotly.
