@@ -17,4 +17,4 @@ You can reach me through the GitHub, email, and LinkedIn icons at the top of the
 # On this site, you can find:
 
 * My [resume](resume.html), with academic and professional experience.
-* A [dashboard](dashboard.html) of NYC restaurant inspection scores, built with flexdashboard and plotly.
+* A [flexdashboard](flexdashboard.html) of NYC restaurant inspection data created with plotly.
