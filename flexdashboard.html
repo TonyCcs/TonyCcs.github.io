@@ -32,6 +32,14 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet" />
+<script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
+<script src="site_libs/plotly-binding-4.12.1/plotly.js"></script>
+<script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet" />
+<script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
+<link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
 <link href="site_libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
 
@@ -299,6 +307,37 @@ ny_noaa_df =
     tmax = as.numeric(tmax) / 10,
     tmin = as.numeric(tmin) / 10
   )</code></pre>
+<div id="column" class="section level2" data-width="500">
+<h2>Column</h2>
+<div
+id="scatterplot-showing-average-max-temperature-in-january-and-in-july-across-all-stations"
+class="section level3">
+<h3>Scatterplot showing average max temperature in January and in July
+across all stations</h3>
+<pre class="r"><code>ny_noaa_df |&gt;
+  filter(month %in% c(1, 7)) |&gt;
+  mutate(month = month.name[month]) |&gt;
+  group_by(year, month) |&gt;
+  summarize(mean_tmax = mean(tmax, na.rm = TRUE)) |&gt;
+  ungroup() |&gt;
+  plot_ly(
+    x = ~year, y = ~mean_tmax, type = &quot;scatter&quot;, 
+    mode = &quot;markers&quot;, color = ~month
+  ) |&gt;
+  layout(
+    xaxis = list(title = &quot;Year&quot;),
+    yaxis = list(title = &quot;Average max temperature (C)&quot;)
+  )</code></pre>
+<pre><code>## `summarise()` has regrouped the output.
+## ℹ Summaries were computed grouped by year and month.
+## ℹ Output is grouped by year.
+## ℹ Use `summarise(.groups = &quot;drop_last&quot;)` to silence this message.
+## ℹ Use `summarise(.by = c(year, month))` for per-operation grouping
+##   (`?dplyr::dplyr_by`) instead.</code></pre>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-70e6b40386c9c847e60b" style="width:672px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-70e6b40386c9c847e60b">{"x":{"visdat":{"fa417b921f3e":["function () ","plotlyVisDat"]},"cur_data":"fa417b921f3e","attrs":{"fa417b921f3e":{"x":{},"y":{},"mode":"markers","color":{},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"scatter"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"xaxis":{"domain":[0,1],"automargin":true,"title":"Year"},"yaxis":{"domain":[0,1],"automargin":true,"title":"Average max temperature (C)"},"hovermode":"closest","showlegend":true},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"x":[1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010],"y":[-4.032291927018246,-4.1077708592777107,0.43418092909535599,-2.3056598984771566,-2.9947926949654491,0.233909952606635,-0.81290630975143552,-0.7961023142509136,2.6609843081312405,4.3715917035656044,-0.085503512880560698,0.51075295275589971,1.1601645123384241,-4.8988461538461525,2.3771175726927902,-0.72244736842105484,-0.31184558434690496,2.8779840164990982,0.15879870935715693,-0.72540716612377987,0.049568527918782759,3.6317580803134186,-3.8008793356130917,-4.8290540540540547,-1.4063083580050126,4.6895842450765901,1.937450636243967,1.9842720261743418,-3.1952369779446257,-0.5707333482843685],"mode":"markers","type":"scatter","name":"January","marker":{"color":"rgba(102,194,165,1)","line":{"color":"rgba(102,194,165,1)"}},"textfont":{"color":"rgba(102,194,165,1)"},"error_y":{"color":"rgba(102,194,165,1)"},"error_x":{"color":"rgba(102,194,165,1)"},"line":{"color":"rgba(102,194,165,1)"},"xaxis":"x","yaxis":"y","frame":null},{"x":[1981,1982,1983,1984,1985,1986,1987,1988,1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010],"y":[27.112939139040076,27.635099164926935,28.643766301512784,26.199974606399188,26.617972350230414,25.927193618564175,27.772666830829845,28.726458384183548,27.042335426843454,26.732177757096323,27.677582892839979,24.303474114441418,27.819127755392273,27.819450373532547,28.146429541134946,25.412519809825675,26.587704054765666,26.49630593132154,28.976675257731959,24.472039225546894,25.711267258382641,28.16628712871287,26.554494655004859,25.416408876933421,28.251134540453815,27.908731393023771,25.993839508979313,27.247361046240076,24.556972477064221,28.78106976744186],"mode":"markers","type":"scatter","name":"July","marker":{"color":"rgba(141,160,203,1)","line":{"color":"rgba(141,160,203,1)"}},"textfont":{"color":"rgba(141,160,203,1)"},"error_y":{"color":"rgba(141,160,203,1)"},"error_x":{"color":"rgba(141,160,203,1)"},"line":{"color":"rgba(141,160,203,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+</div>
+</div>
 
 
 

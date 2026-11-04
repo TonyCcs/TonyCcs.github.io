@@ -29,3 +29,25 @@ ny_noaa_df =
     tmin = as.numeric(tmin) / 10
   )
 ```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+### Scatterplot showing average max temperature in January and in July across all stations
+
+```{r}
+ny_noaa_df |>
+  filter(month %in% c(1, 7)) |>
+  mutate(month = month.name[month]) |>
+  group_by(year, month) |>
+  summarize(mean_tmax = mean(tmax, na.rm = TRUE)) |>
+  ungroup() |>
+  plot_ly(
+    x = ~year, y = ~mean_tmax, type = "scatter", 
+    mode = "markers", color = ~month
+  ) |>
+  layout(
+    xaxis = list(title = "Year"),
+    yaxis = list(title = "Average max temperature (C)")
+  )
+```
