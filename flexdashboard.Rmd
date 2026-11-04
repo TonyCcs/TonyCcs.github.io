@@ -51,3 +51,24 @@ ny_noaa_df |>
     yaxis = list(title = "Average max temperature (C)")
   )
 ```
+
+### Boxplot showing average max temperature from each station by month in 2010
+
+```{r}
+ny_noaa_df |>
+  filter(year == 2010) |>
+  drop_na(tmax) |>
+  mutate(month = factor(month.name[month], levels = month.name)) |>
+  group_by(id, month) |>
+  summarize(mean_tmax = mean(tmax)) |>
+  ungroup() |>
+  plot_ly(
+    x = ~month, y = ~mean_tmax, type = "box", 
+    color = ~month, colors = "viridis"
+  ) |>
+  layout(
+    xaxis = list(title = "Month"),
+    yaxis = list(title = "Average max temperature (C)"),
+    showlegend = FALSE
+  )
+```
