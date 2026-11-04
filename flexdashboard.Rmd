@@ -52,6 +52,9 @@ ny_noaa_df |>
   )
 ```
 
+Column {data-width=500}
+-----------------------------------------------------------------------
+
 ### Boxplot showing average max temperature from each station by month in 2010
 
 ```{r}
@@ -69,6 +72,24 @@ ny_noaa_df |>
   layout(
     xaxis = list(title = "Month"),
     yaxis = list(title = "Average max temperature (C)"),
+    showlegend = FALSE
+  )
+```
+
+### Barchart showing average daily precipitation by month
+
+```{r}
+ny_noaa_df |>
+  mutate(month = factor(month.name[month], levels = month.name)) |>
+  group_by(month) |>
+  summarize(mean_prcp = mean(prcp, na.rm = TRUE)) |>
+  plot_ly(
+    x = ~month, y = ~mean_prcp, type = "bar", 
+    color = ~month, colors = "viridis"
+  ) |>
+  layout(
+    xaxis = list(title = "Month"),
+    yaxis = list(title = "Average daily precipitation (mm)"),
     showlegend = FALSE
   )
 ```
