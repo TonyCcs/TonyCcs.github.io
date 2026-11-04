@@ -55,7 +55,7 @@ ny_noaa_df |>
 Column {data-width=500}
 -----------------------------------------------------------------------
 
-### Boxplot showing average max temperature from each station by month in 2010
+### Box plot showing average max temperature from each station by month in 2010
 
 ```{r}
 ny_noaa_df |>
@@ -76,7 +76,7 @@ ny_noaa_df |>
   )
 ```
 
-### Barchart showing average daily precipitation by month
+### Bar plot showing average daily precipitation by month
 
 ```{r}
 ny_noaa_df |>
