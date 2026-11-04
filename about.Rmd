@@ -8,4 +8,4 @@ output:
 ## On this site, you can find
 
 * My [resume](resume.html), with academic and professional experience.
-* A [flexdashboard](flexdashboard.html) of NYC restaurant inspection data created with plotly.
+* A [flexdashboard](flexdashboard.html) of NOAA data created with plotly.
