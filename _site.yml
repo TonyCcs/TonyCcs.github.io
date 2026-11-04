@@ -15,7 +15,7 @@ navbar:
     - icon: fa-envelope fa-lg
       href: mailto:chenchangshen899@gmail.com
     - icon: fa-linkedin fa-lg
-      href: https://www.linkedin.com/in/www.linkedin.com/in/changshen-tony-chen
+      href: https://www.linkedin.com/in/changshen-tony-chen
 output:
   html_document:
     theme: flatly
